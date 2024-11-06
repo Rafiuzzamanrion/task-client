@@ -84,7 +84,7 @@ const Card = ({ title, color }) => {
         <div className="flex gap-2 items-center">
           <h1
             className={`w-7 h-7 rounded-tl-full rounded-bl-full ${
-              color ? `bg-${color}-400` : "bg-blue-400"
+              color ? `${color}` : "bg-blue-400"
             }`}
           ></h1>
           <h1>{title}</h1>
