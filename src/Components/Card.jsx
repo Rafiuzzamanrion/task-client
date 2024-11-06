@@ -20,7 +20,7 @@ const Card = ({ title, color }) => {
     const fetchAttachmentCount = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/attachments/count"
+          "https://seo-page1-task-server.vercel.app/api/attachments/count"
         );
         setAttachmentCount(response.data.count);
       } catch (error) {
@@ -31,7 +31,7 @@ const Card = ({ title, color }) => {
     const fetchUploadedFiles = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/attachments"
+          "https://seo-page1-task-server.vercel.app/api/attachments"
         );
         setUploadedFiles(response.data); // Store uploaded files to display in the list
       } catch (error) {
@@ -53,18 +53,22 @@ const Card = ({ title, color }) => {
     files.forEach((file) => formData.append("files", file));
 
     try {
-      await axios.post("http://localhost:5000/api/upload", formData, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
+      await axios.post(
+        "https://seo-page1-task-server.vercel.app/api/upload",
+        formData,
+        {
+          headers: { "Content-Type": "multipart/form-data" },
+        }
+      );
       toast.success("Attachment uploaded successfully!");
       setFiles([]);
       // Fetch updated count and list of files after upload
       const countResponse = await axios.get(
-        "http://localhost:5000/api/attachments/count"
+        "https://seo-page1-task-server.vercel.app/api/attachments/count"
       );
       setAttachmentCount(countResponse.data.count);
       const filesResponse = await axios.get(
-        "http://localhost:5000/api/attachments"
+        "https://seo-page1-task-server.vercel.app/api/attachments"
       );
       setUploadedFiles(filesResponse.data);
       setIsAttachmentModalOpen(false);
