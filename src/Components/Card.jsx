@@ -169,7 +169,7 @@ const Card = ({ title, color }) => {
               multiple
               className="file-input file-input-bordered w-full max-w-xs"
             />
-            <div className="flex justify-end">
+            <div className="flex justify-end my-5">
               <button onClick={handleUpload} className="btn btn-info">
                 Post
               </button>
